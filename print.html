@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tarkov Database Docs</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="ayu">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="affix"><a href="index.html">The Project</a></li><li><a href="api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li><a href="api/authentication.html"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li><a href="api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li><a href="api/item/common.html"><strong aria-hidden="true">1.2.1.</strong> Common</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Tarkov Database Docs</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#the-project" id="the-project">The Project</a></h1>
+<h1><a class="header" href="#rest-api" id="rest-api">REST API</a></h1>
+<h1><a class="header" href="#authentication" id="authentication">Authentication</a></h1>
+<p>The API uses the open standard and stateless authentication method <strong>JSON Web Token (JWT)</strong>. A token contains all the data required for authentication, so no database query is needed.</p>
+<p>To learn more visit the <a href="https://jwt.io/introduction/">official website</a>.</p>
+<h2><a class="header" href="#get-a-token" id="get-a-token">Get A Token</a></h2>
+<p>If you do not have a token yet, you can apply for one using the following form.</p>
+<p><a href="https://forms.gle/A67VotJK8FPZeDKK9">API Request Form</a></p>
+<h2><a class="header" href="#use-a-token" id="use-a-token">Use A Token</a></h2>
+<p>For every request, a valid token must be transmitted. This can be done with passing the token via the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">authorization header</a> with the type <code>Bearer</code>.</p>
+<pre><code class="language-HEADER">Authorization: Bearer &lt;TOKEN&gt;
+</code></pre>
+<h2><a class="header" href="#refresh-a-token" id="refresh-a-token">Refresh A Token</a></h2>
+<p>Every token has a fixed lifetime of <strong>30 minutes</strong>, after which time it must be refreshed.
+To get a new fresh token, a <code>GET</code> request to the <code>/token</code> endpoint must be made with a previous valid token.</p>
+<p><em>There is a possibility that the lifetime of tokens will change in the future. Therefore, it's recommended to automatically check the expiration time of each token</em></p>
+<h3><a class="header" href="#get-token" id="get-token"><strong>GET</strong> <code>/token</code></a></h3>
+<h4><a class="header" href="#201-created" id="201-created"><code>201</code> Created</a></h4>
+<p>Token successfully created</p>
+<pre><code class="language-JSON">{
+    &quot;token&quot;: &quot;&lt;TOKEN&gt;&quot;
+}
+</code></pre>
+<h4><a class="header" href="#401-unauthorized" id="401-unauthorized"><code>401</code> Unauthorized</a></h4>
+<p>No or invalid token</p>
+<pre><code class="language-JSON">{
+    &quot;status&quot;: &quot;Unauthorized&quot;,
+    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
+    &quot;code&quot;: 401
+}
+</code></pre>
+<h4><a class="header" href="#403-forbidden" id="403-forbidden"><code>403</code> Forbidden</a></h4>
+<p>Locked user</p>
+<pre><code class="language-JSON">{
+    &quot;status&quot;: &quot;Forbidden&quot;,
+    &quot;message&quot;: &quot;User is locked&quot;,
+    &quot;code&quot;: 403
+}
+</code></pre>
+<h4><a class="header" href="#422-unprocessable-entity" id="422-unprocessable-entity"><code>422</code> Unprocessable Entity</a></h4>
+<p>Token signing error</p>
+<pre><code class="language-JSON">{
+    &quot;status&quot;: &quot;Unprocessable Entity&quot;,
+    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
+    &quot;code&quot;: 422
+}
+</code></pre>
+<h1><a class="header" href="#items" id="items">Items</a></h1>
+<h1><a class="header" href="#common" id="common">Common</a></h1>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_id</code></td><td>string</td><td>The ID of the item</td></tr>
+<tr><td><code>name</code></td><td>string</td><td>The name of the item</td></tr>
+<tr><td><code>shortName</code></td><td>string</td><td>The short name of the item</td></tr>
+<tr><td><code>description</code></td><td>string</td><td>The description of the item</td></tr>
+<tr><td><code>price</code></td><td>int</td><td>The base price of the item</td></tr>
+<tr><td><code>weight</code></td><td>float</td><td>The weight of the item</td></tr>
+<tr><td><code>maxStack</code></td><td>int</td><td>The maximum stack size of the item</td></tr>
+<tr><td><code>rarity</code></td><td>string</td><td>The rarity of the item</td></tr>
+<tr><td><code>grid</code></td><td>object</td><td>The grid properties of the item</td></tr>
+<tr><td><code>_modified</code></td><td>int</td><td>The modified date as Unix timestamp</td></tr>
+<tr><td><code>_kind</code></td><td>string</td><td>The entity type of the item</td></tr>
+</tbody></table>
+<h2><a class="header" href="#example" id="example">Example</a></h2>
+<pre><code class="language-JSON">{
+  &quot;_id&quot;: &quot;590dde5786f77405e71908b2&quot;,
+  &quot;name&quot;: &quot;Bank case&quot;,
+  &quot;shortName&quot;: &quot;Case&quot;,
+  &quot;description&quot;: &quot;Armored bank case. It clearly hides something valuable, and thus survived many attempts of breaking it open.&quot;,
+  &quot;price&quot;: 0,
+  &quot;weight&quot;: 7,
+  &quot;maxStack&quot;: 1,
+  &quot;rarity&quot;: &quot;none&quot;,
+  &quot;grid&quot;: {
+    &quot;color&quot;: {
+      &quot;r&quot;: 104,
+      &quot;g&quot;: 102,
+      &quot;b&quot;: 40,
+      &quot;a&quot;: 1
+    },
+    &quot;height&quot;: 4,
+    &quot;width&quot;: 4
+  },
+  &quot;_kind&quot;: &quot;common&quot;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
