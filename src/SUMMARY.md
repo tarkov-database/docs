@@ -7,3 +7,4 @@
   - [Items](./api/item/items.md)
     - [Common](./api/item/common.md)
     - [Ammunition](./api/item/ammunition.md)
+    - [Armor](./api/item/armor.md)
