@@ -6,3 +6,4 @@
   - [Authentication](./api/authentication.md)
   - [Items](./api/item/items.md)
     - [Common](./api/item/common.md)
+    - [Ammunition](./api/item/ammunition.md)
