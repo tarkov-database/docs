@@ -18,16 +18,16 @@
 | Name  | Type   | Description          |
 | ----- | ------ | -------------------- |
 | `color` | [object](#color) | The grid background color in RGBA |
-| `height` | int | The grid height |
-| `width` | int | The grid width |
+| `height` | int | The grid height of the item |
+| `width` | int | The grid width of the item |
 
 ## Color
 | Name  | Type   | Description          |
 | ----- | ------ | -------------------- |
-| `r` | int | Red channel |
-| `g` | int | Green channel |
-| `b` | int | Blue channel |
-| `a` | int | Alpha channel |
+| `r` | uint | Red channel |
+| `g` | uint | Green channel |
+| `b` | uint | Blue channel |
+| `a` | uint | Alpha channel |
 
 ## Example
 ```JSON
