@@ -27,8 +27,8 @@
 ## Weapon Modifier
 | Name  | Type   | Description          |
 | ----- | ------ | -------------------- |
-| `accuracy` | float | Modifier for weapon accuracy |
-| `recoil` | float | Modifier for weapon recoil |
+| `accuracy` | float | Modifier for weapon accuracy (percent) |
+| `recoil` | float | Modifier for weapon recoil (percent) |
 
 ## Example
 ```JSON
