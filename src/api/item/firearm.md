@@ -19,7 +19,7 @@
 ## Slot
 | Name  | Type   | Description          |
 | ----- | ------ | -------------------- |
-| `filter` | object | A map with compatible item IDs categorized by `kind` |
+| `filter` | object | A map of compatible item IDs categorized by `kind` |
 | `required` | bool | Indicates whether the slot is required for an operational state |
 
 ## Example

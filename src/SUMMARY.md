@@ -10,3 +10,4 @@
     - [Armor](./api/item/armor.md)
     - [Backpack](./api/item/backpack.md)
     - [Firearm](./api/item/firearm.md)
+    - [Modification](./api/item/modification.md)
