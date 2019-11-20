@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>REST API - Tarkov Database Docs</title>
+        <title>Firearm - Tarkov Database Docs</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -11,21 +11,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -35,7 +35,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "../";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
         </script>
 
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded affix "><a href="../index.html">The Project</a></li><li class="expanded "><a href="../api/api.html" class="active"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="expanded "><a href="../api/authentication.html"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="expanded "><a href="../api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="expanded "><a href="../api/item/common.html"><strong aria-hidden="true">1.2.1.</strong> Common</a></li><li class="expanded "><a href="../api/item/ammunition.html"><strong aria-hidden="true">1.2.2.</strong> Ammunition</a></li><li class="expanded "><a href="../api/item/armor.html"><strong aria-hidden="true">1.2.3.</strong> Armor</a></li><li class="expanded "><a href="../api/item/backpack.html"><strong aria-hidden="true">1.2.4.</strong> Backpack</a></li><li class="expanded "><a href="../api/item/firearm.html"><strong aria-hidden="true">1.2.5.</strong> Firearm</a></li><li class="expanded "><a href="../api/item/modification.html"><strong aria-hidden="true">1.2.6.</strong> Modification</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded affix "><a href="../../index.html">The Project</a></li><li class="expanded "><a href="../../api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="expanded "><a href="../../api/authentication.html"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="expanded "><a href="../../api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="expanded "><a href="../../api/item/common.html"><strong aria-hidden="true">1.2.1.</strong> Common</a></li><li class="expanded "><a href="../../api/item/ammunition.html"><strong aria-hidden="true">1.2.2.</strong> Ammunition</a></li><li class="expanded "><a href="../../api/item/armor.html"><strong aria-hidden="true">1.2.3.</strong> Armor</a></li><li class="expanded "><a href="../../api/item/backpack.html"><strong aria-hidden="true">1.2.4.</strong> Backpack</a></li><li class="expanded "><a href="../../api/item/firearm.html" class="active"><strong aria-hidden="true">1.2.5.</strong> Firearm</a></li><li class="expanded "><a href="../../api/item/modification.html"><strong aria-hidden="true">1.2.6.</strong> Modification</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -116,7 +116,7 @@
                         <h1 class="menu-title">Tarkov Database Docs</h1>
 
                         <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <a href="../../print.html" title="Print this book" aria-label="Print this book">
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
                             
@@ -148,20 +148,116 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#rest-api" id="rest-api">REST API</a></h1>
+                        <h1><a class="header" href="#firearm" id="firearm">Firearm</a></h1>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>type</code></td><td>string</td><td>The type of the firearm, e.g. <code>primary</code>, <code>secondary</code></td></tr>
+<tr><td><code>class</code></td><td>string</td><td>The weapon class, e.g. <code>assaultCarbine</code>, <code>pistol</code>, <code> smg</code></td></tr>
+<tr><td><code>caliber</code></td><td>string</td><td>The weapon caliber</td></tr>
+<tr><td><code>rof</code></td><td>int</td><td>The rate of fire of the weapon</td></tr>
+<tr><td><code>action</code></td><td>string</td><td>The action type e.g. <code>gas</code>, <code>recoil</code>, <code>bolt</code></td></tr>
+<tr><td><code>modes</code></td><td>[]string</td><td>The fire modes of the weapon</td></tr>
+<tr><td><code>velocity</code></td><td>float</td><td>The muzzle velocity in meters per second</td></tr>
+<tr><td><code>effectiveDist</code></td><td>float</td><td>The maximum effective range of the weapon</td></tr>
+<tr><td><code>ergonomics</code></td><td>float</td><td>The base ergonomics of the firearm</td></tr>
+<tr><td><code>foldRectractable</code></td><td>bool</td><td>Indicates if the butstock is fold or rectractable</td></tr>
+<tr><td><code>recoilVertical</code></td><td>float</td><td>The base vertical recoil of the weapon</td></tr>
+<tr><td><code>recoilHorizontal</code></td><td>float</td><td>The base horizontal recoil of the weapon</td></tr>
+<tr><td><code>slots</code></td><td><a href="#slot">object</a></td><td>A map of the modification slots</td></tr>
+</tbody></table>
+<h2><a class="header" href="#slot" id="slot">Slot</a></h2>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>filter</code></td><td>object</td><td>A map of compatible item IDs categorized by <code>kind</code></td></tr>
+<tr><td><code>required</code></td><td>bool</td><td>Indicates whether the slot is required for an operational state</td></tr>
+</tbody></table>
+<h2><a class="header" href="#example" id="example">Example</a></h2>
+<pre><code class="language-JSON">{
+  &quot;_id&quot;: &quot;574d967124597745970e7c94&quot;,
+  &quot;name&quot;: &quot;Simonov Semi-Automatic Carbine SKS 7.62x39&quot;,
+  &quot;shortName&quot;: &quot;SKS&quot;,
+  &quot;description&quot;: &quot;Soviet semi-automatic carbine designed by Sergei Simonov for 7.62x39 cartridge and known abroad as SKS-45. Immensely popular both in CIS countries and in the West, this weapon is still in active service in some countries in form of various copies and modifications. This particular specimen comes from extended storage warehouses of Tula Arms Plant and haven't yet undergo the civilian weapon normalization procedure.&quot;,
+  &quot;price&quot;: 19331,
+  &quot;weight&quot;: 2.627,
+  &quot;maxStack&quot;: 1,
+  &quot;rarity&quot;: &quot;rare&quot;,
+  &quot;grid&quot;: {
+    &quot;color&quot;: {
+      &quot;r&quot;: 0,
+      &quot;g&quot;: 0,
+      &quot;b&quot;: 0,
+      &quot;a&quot;: 1
+    },
+    &quot;height&quot;: 1,
+    &quot;width&quot;: 4
+  },
+  &quot;_modified&quot;: 1571536468,
+  &quot;_kind&quot;: &quot;firearm&quot;,
+  &quot;type&quot;: &quot;primary&quot;,
+  &quot;class&quot;: &quot;assaultCarbine&quot;,
+  &quot;caliber&quot;: &quot;7.62x39mm&quot;,
+  &quot;rof&quot;: 40,
+  &quot;action&quot;: &quot;gas&quot;,
+  &quot;modes&quot;: [
+    &quot;single&quot;
+  ],
+  &quot;velocity&quot;: 0,
+  &quot;effectiveDist&quot;: 400,
+  &quot;ergonomics&quot;: 40,
+  &quot;foldRectractable&quot;: false,
+  &quot;recoilVertical&quot;: 182,
+  &quot;recoilHorizontal&quot;: 400,
+  &quot;slots&quot;: {
+    &quot;magazine&quot;: {
+      &quot;filter&quot;: {
+        &quot;magazine&quot;: [
+          &quot;5c5970672e221602b21d7855&quot;,
+          &quot;587df583245977373c4f1129&quot;,
+          &quot;587df3a12459772c28142567&quot;
+        ]
+      },
+      &quot;required&quot;: false
+    },
+    &quot;muzzle&quot;: {
+      &quot;filter&quot;: {
+        &quot;modificationMuzzle&quot;: [
+          &quot;593d490386f7745ee97a1555&quot;
+        ]
+      },
+      &quot;required&quot;: false
+    },
+    &quot;sightRear&quot;: {
+      &quot;filter&quot;: {
+        &quot;modificationSight&quot;: [
+          &quot;574db213245977459a2f3f5d&quot;
+        ]
+      },
+      &quot;required&quot;: false
+    },
+    &quot;stock&quot;: {
+      &quot;filter&quot;: {
+        &quot;modificationStock&quot;: [
+          &quot;587e0531245977466077a0f7&quot;,
+          &quot;5afd7ded5acfc40017541f5e&quot;,
+          &quot;574dad8024597745964bf05c&quot;
+        ]
+      },
+      &quot;required&quot;: true
+    }
+  }
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../api/item/backpack.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../api/authentication.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../api/item/modification.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -173,13 +269,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../../api/item/backpack.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../api/authentication.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../../api/item/modification.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -202,14 +298,14 @@
         
 
         
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
