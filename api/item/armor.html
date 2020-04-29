@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Authentication - Tarkov Database Docs</title>
+        <title>Armor - Tarkov Database Docs</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -11,21 +11,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -35,7 +35,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "../";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
         </script>
 
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">The Project</a></li><li class="chapter-item expanded "><a href="../api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api/authentication.html" class="active"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="chapter-item expanded "><a href="../api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api/item/common.html"><strong aria-hidden="true">1.2.1.</strong> Common</a></li><li class="chapter-item expanded "><a href="../api/item/ammunition.html"><strong aria-hidden="true">1.2.2.</strong> Ammunition</a></li><li class="chapter-item expanded "><a href="../api/item/armor.html"><strong aria-hidden="true">1.2.3.</strong> Armor</a></li><li class="chapter-item expanded "><a href="../api/item/backpack.html"><strong aria-hidden="true">1.2.4.</strong> Backpack</a></li><li class="chapter-item expanded "><a href="../api/item/firearm.html"><strong aria-hidden="true">1.2.5.</strong> Firearm</a></li><li class="chapter-item expanded "><a href="../api/item/modification.html"><strong aria-hidden="true">1.2.6.</strong> Modification</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">The Project</a></li><li class="chapter-item expanded "><a href="../../api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../api/authentication.html"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="chapter-item expanded "><a href="../../api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../api/item/common.html"><strong aria-hidden="true">1.2.1.</strong> Common</a></li><li class="chapter-item expanded "><a href="../../api/item/ammunition.html"><strong aria-hidden="true">1.2.2.</strong> Ammunition</a></li><li class="chapter-item expanded "><a href="../../api/item/armor.html" class="active"><strong aria-hidden="true">1.2.3.</strong> Armor</a></li><li class="chapter-item expanded "><a href="../../api/item/backpack.html"><strong aria-hidden="true">1.2.4.</strong> Backpack</a></li><li class="chapter-item expanded "><a href="../../api/item/firearm.html"><strong aria-hidden="true">1.2.5.</strong> Firearm</a></li><li class="chapter-item expanded "><a href="../../api/item/modification.html"><strong aria-hidden="true">1.2.6.</strong> Modification</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -116,7 +116,7 @@
                     <h1 class="menu-title">Tarkov Database Docs</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -147,49 +147,80 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#authentication" id="authentication">Authentication</a></h1>
-<p>The API uses the open standard and stateless authentication method <strong>JSON Web Token (JWT)</strong>. A token contains all the data required for authentication, so no database query is needed.</p>
-<p>To learn more visit the <a href="https://jwt.io/introduction/">official website</a>.</p>
-<h2><a class="header" href="#get-a-token" id="get-a-token">Get A Token</a></h2>
-<p>If you do not have a token yet, you can apply for one using the following form.</p>
-<p><a href="https://forms.gle/A67VotJK8FPZeDKK9">API Request Form</a></p>
-<h2><a class="header" href="#use-a-token" id="use-a-token">Use A Token</a></h2>
-<p>For every request, a valid token must be transmitted. This can be done with passing the token via the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">authorization header</a> with the type <code>Bearer</code>.</p>
-<pre><code class="language-HEADER">Authorization: Bearer &lt;TOKEN&gt;
-</code></pre>
-<h2><a class="header" href="#refresh-a-token" id="refresh-a-token">Refresh A Token</a></h2>
-<p>Every token has a fixed lifetime of <strong>30 minutes</strong>, after which time it must be refreshed.
-To get a new fresh token, a <code>GET</code> request to the <code>/token</code> endpoint must be made with a previous valid token.</p>
-<p><em>There is a possibility that the lifetime of tokens will change in the future. Therefore, it's recommended to automatically check the expiration time of each token</em></p>
-<h3><a class="header" href="#get-token" id="get-token"><strong>GET</strong> <code>/token</code></a></h3>
-<h4><a class="header" href="#201-created" id="201-created"><code>201</code> Created</a></h4>
-<p>Token successfully created</p>
+                        <h1><a class="header" href="#armor" id="armor">Armor</a></h1>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>type</code></td><td>string</td><td>The type of the armor e.g. <code>body, helmet</code></td></tr>
+<tr><td><code>armor</code></td><td><a href="#armor-properties">object</a></td><td>The armor properties</td></tr>
+<tr><td><code>penalties</code></td><td><a href="#penalties">object</a></td><td>The penalties of the armor</td></tr>
+<tr><td><code>blocking</code></td><td>array</td><td>Blocked zones e.g. <code>earpiece, eyewear</code></td></tr>
+<tr><td><code>slots</code></td><td>object</td><td>Modification slots of the armor</td></tr>
+<tr><td><code>compatibility</code></td><td>object</td><td>If it's an attachment to which it's compatible</td></tr>
+</tbody></table>
+<h2><a class="header" href="#armor-properties" id="armor-properties">Armor properties</a></h2>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>class</code></td><td>int</td><td>The armor class</td></tr>
+<tr><td><code>durability</code></td><td>float</td><td>The max durability of the armor</td></tr>
+<tr><td><code>material</code></td><td><a href="#material-properties">object</a></td><td>Material properties of the armor</td></tr>
+<tr><td><code>bluntThroughput</code></td><td>float</td><td>The damage done to the target when the armor is not penetrated</td></tr>
+<tr><td><code>zones</code></td><td>array</td><td>The zones protected by the armor</td></tr>
+</tbody></table>
+<h2><a class="header" href="#material-properties" id="material-properties">Material properties</a></h2>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>name</code></td><td>string</td><td>Name of the material</td></tr>
+<tr><td><code>destructibility</code></td><td>float</td><td>The destructibility of the material</td></tr>
+</tbody></table>
+<h2><a class="header" href="#penalties" id="penalties">Penalties</a></h2>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>mouse</code></td><td>float</td><td>Mouse speed penalty</td></tr>
+<tr><td><code>speed</code></td><td>float</td><td>Movement speed penalty</td></tr>
+<tr><td><code>ergonomics</code></td><td>int</td><td>Ergonomics deduction</td></tr>
+<tr><td><code>deafness</code></td><td>string</td><td>Strength of hearing reduction e.g. <code>low, medium, high</code></td></tr>
+</tbody></table>
+<h2><a class="header" href="#example" id="example">Example</a></h2>
 <pre><code class="language-JSON">{
-    &quot;token&quot;: &quot;&lt;TOKEN&gt;&quot;
-}
-</code></pre>
-<h4><a class="header" href="#401-unauthorized" id="401-unauthorized"><code>401</code> Unauthorized</a></h4>
-<p>No or invalid token</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Unauthorized&quot;,
-    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
-    &quot;code&quot;: 401
-}
-</code></pre>
-<h4><a class="header" href="#403-forbidden" id="403-forbidden"><code>403</code> Forbidden</a></h4>
-<p>Locked user</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Forbidden&quot;,
-    &quot;message&quot;: &quot;User is locked&quot;,
-    &quot;code&quot;: 403
-}
-</code></pre>
-<h4><a class="header" href="#422-unprocessable-entity" id="422-unprocessable-entity"><code>422</code> Unprocessable Entity</a></h4>
-<p>Token signing error</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Unprocessable Entity&quot;,
-    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
-    &quot;code&quot;: 422
+  &quot;_id&quot;: &quot;5b44d0de86f774503d30cba8&quot;,
+  &quot;name&quot;: &quot;IOTV Gen4 armor (high mobility kit)&quot;,
+  &quot;shortName&quot;: &quot;Gen4 HMK&quot;,
+  &quot;description&quot;: &quot;The Improved Outer Tactical Vest (IOTV) Gen IV is designed to permit maximum freedom of movement required to assume correct firing positions with the agility to execute and maneuver tasks. Optimal design characteristics ensure the best possible weight distribution of both the ballistic body armor system as well as additional load bearing equipment, thus providing enhanced comfort, wear duration, and mobility. Increased mobility and comfort kit.&quot;,
+  &quot;price&quot;: 118774,
+  &quot;weight&quot;: 10,
+  &quot;maxStack&quot;: 1,
+  &quot;rarity&quot;: &quot;superrare&quot;,
+  &quot;grid&quot;: {
+    &quot;color&quot;: {
+      &quot;r&quot;: 28,
+      &quot;g&quot;: 65,
+      &quot;b&quot;: 86,
+      &quot;a&quot;: 255
+    },
+    &quot;height&quot;: 4,
+    &quot;width&quot;: 3
+  },
+  &quot;_modified&quot;: 1571536471,
+  &quot;_kind&quot;: &quot;armor&quot;,
+  &quot;type&quot;: &quot;body&quot;,
+  &quot;armor&quot;: {
+    &quot;class&quot;: 5,
+    &quot;durability&quot;: 62,
+    &quot;material&quot;: {
+      &quot;name&quot;: &quot;titanium&quot;,
+      &quot;destructibility&quot;: 0.45
+    },
+    &quot;bluntThroughput&quot;: 0.22,
+    &quot;zones&quot;: [
+      &quot;chest&quot;,
+      &quot;stomach&quot;
+    ]
+  },
+  &quot;penalties&quot;: {
+    &quot;mouse&quot;: -15,
+    &quot;speed&quot;: -11,
+    &quot;ergonomics&quot;: -11,
+    &quot;deafness&quot;: &quot;none&quot;
+  },
+  &quot;blocking&quot;: [],
+  &quot;slots&quot;: {},
+  &quot;compatibility&quot;: {}
 }
 </code></pre>
 
@@ -198,13 +229,13 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../api/api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../api/item/ammunition.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../api/item/items.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../api/item/backpack.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -216,13 +247,13 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../api/api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../api/item/ammunition.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../api/item/items.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../api/item/backpack.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -245,14 +276,14 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
         
 
         
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
