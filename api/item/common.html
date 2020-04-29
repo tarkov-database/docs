@@ -80,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded affix "><a href="../../index.html">The Project</a></li><li class="expanded "><a href="../../api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="expanded "><a href="../../api/authentication.html"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="expanded "><a href="../../api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="expanded "><a href="../../api/item/common.html" class="active"><strong aria-hidden="true">1.2.1.</strong> Common</a></li><li class="expanded "><a href="../../api/item/ammunition.html"><strong aria-hidden="true">1.2.2.</strong> Ammunition</a></li><li class="expanded "><a href="../../api/item/armor.html"><strong aria-hidden="true">1.2.3.</strong> Armor</a></li><li class="expanded "><a href="../../api/item/backpack.html"><strong aria-hidden="true">1.2.4.</strong> Backpack</a></li><li class="expanded "><a href="../../api/item/firearm.html"><strong aria-hidden="true">1.2.5.</strong> Firearm</a></li><li class="expanded "><a href="../../api/item/modification.html"><strong aria-hidden="true">1.2.6.</strong> Modification</a></li></ol></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">The Project</a></li><li class="chapter-item expanded "><a href="../../api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../api/authentication.html"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="chapter-item expanded "><a href="../../api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../api/item/common.html" class="active"><strong aria-hidden="true">1.2.1.</strong> Common</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -90,37 +90,36 @@
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Tarkov Database Docs</h1>
+                    <h1 class="menu-title">Tarkov Database Docs</h1>
 
-                        <div class="right-buttons">
-                            <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -154,48 +153,34 @@
 <tr><td><code>name</code></td><td>string</td><td>The name of the item</td></tr>
 <tr><td><code>shortName</code></td><td>string</td><td>The short name of the item</td></tr>
 <tr><td><code>description</code></td><td>string</td><td>The description of the item</td></tr>
-<tr><td><code>price</code></td><td>int</td><td>The base price in rubles of the item</td></tr>
+<tr><td><code>price</code></td><td>int</td><td>The base price of the item</td></tr>
 <tr><td><code>weight</code></td><td>float</td><td>The weight of the item</td></tr>
 <tr><td><code>maxStack</code></td><td>int</td><td>The maximum stack size of the item</td></tr>
 <tr><td><code>rarity</code></td><td>string</td><td>The rarity of the item</td></tr>
-<tr><td><code>grid</code></td><td><a href="#grid">object</a></td><td>The grid properties of the item</td></tr>
+<tr><td><code>grid</code></td><td>object</td><td>The grid properties of the item</td></tr>
 <tr><td><code>_modified</code></td><td>int</td><td>The modified date as Unix timestamp</td></tr>
 <tr><td><code>_kind</code></td><td>string</td><td>The entity type of the item</td></tr>
 </tbody></table>
-<h2><a class="header" href="#grid" id="grid">Grid</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>color</code></td><td><a href="#color">object</a></td><td>The grid background color in RGBA</td></tr>
-<tr><td><code>height</code></td><td>int</td><td>The grid height of the item</td></tr>
-<tr><td><code>width</code></td><td>int</td><td>The grid width of the item</td></tr>
-</tbody></table>
-<h2><a class="header" href="#color" id="color">Color</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>r</code></td><td>uint</td><td>Red channel</td></tr>
-<tr><td><code>g</code></td><td>uint</td><td>Green channel</td></tr>
-<tr><td><code>b</code></td><td>uint</td><td>Blue channel</td></tr>
-<tr><td><code>a</code></td><td>uint</td><td>Alpha channel</td></tr>
-</tbody></table>
 <h2><a class="header" href="#example" id="example">Example</a></h2>
 <pre><code class="language-JSON">{
-  &quot;_id&quot;: &quot;590c392f86f77444754deb29&quot;,
-  &quot;name&quot;: &quot;SSD drive&quot;,
-  &quot;shortName&quot;: &quot;SSD&quot;,
-  &quot;description&quot;: &quot;Solid state drive. Used to store data, with enhanced read and write performance.&quot;,
-  &quot;price&quot;: 250000,
-  &quot;weight&quot;: 0.4,
+  &quot;_id&quot;: &quot;590dde5786f77405e71908b2&quot;,
+  &quot;name&quot;: &quot;Bank case&quot;,
+  &quot;shortName&quot;: &quot;Case&quot;,
+  &quot;description&quot;: &quot;Armored bank case. It clearly hides something valuable, and thus survived many attempts of breaking it open.&quot;,
+  &quot;price&quot;: 0,
+  &quot;weight&quot;: 7,
   &quot;maxStack&quot;: 1,
-  &quot;rarity&quot;: &quot;rare&quot;,
+  &quot;rarity&quot;: &quot;none&quot;,
   &quot;grid&quot;: {
     &quot;color&quot;: {
-      &quot;r&quot;: 28,
-      &quot;g&quot;: 65,
-      &quot;b&quot;: 86,
-      &quot;a&quot;: 255
+      &quot;r&quot;: 104,
+      &quot;g&quot;: 102,
+      &quot;b&quot;: 40,
+      &quot;a&quot;: 1
     },
-    &quot;height&quot;: 1,
-    &quot;width&quot;: 1
+    &quot;height&quot;: 4,
+    &quot;width&quot;: 4
   },
-  &quot;_modified&quot;: 1571536468,
   &quot;_kind&quot;: &quot;common&quot;
 }
 </code></pre>
@@ -211,10 +196,6 @@
                         
 
                         
-                            <a rel="next" href="../../api/item/ammunition.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -223,15 +204,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../../api/item/items.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../api/item/items.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../../api/item/ammunition.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
