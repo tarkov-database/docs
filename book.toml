@@ -1,5 +1,5 @@
 [book]
-authors = ["Markus Wiegand <mail@morphy2k.io>"]
+authors = ["Markus Wiegand <mail@morphy2k.dev>"]
 language = "en"
 multilingual = false
 src = "src"
