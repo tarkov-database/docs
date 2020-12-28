@@ -13,6 +13,7 @@
 | `penetration` | float | The penetration power of the ammo |
 | `armorDamage` | float | The damage done to an armor |
 | `fragmentation` | [object](#fragmentation) | The fragmentation properties of the ammo |
+| `effects` | [object](#effects) | Various effects of the ammo |
 | `pellets` | int | **DEPRCATED** The pellet count of the ammo if it's buckshot |
 | `projectiles` | int | The projectile count, relevant to e.g. buckshot or flechette rounds |
 | `weaponModifier` | [object](#weapon-modifier) | The fragmentation properties of the ammo |
@@ -23,6 +24,12 @@
 | `chance` | float | The penetration chance of the ammunition |
 | `min` | int | The minimal fragment count |
 | `max` | int | Indicates if it's tracer ammunition |
+
+## Effects
+| Name  | Type   | Description          |
+| ----- | ------ | -------------------- |
+| `lightBleedingChance` | float | Percentage value increases or decreases the chance of light bleeding |
+| `heavyBleedingChance` | float | Percentage value increases or decreases the chance of heavy bleeding |
 
 ## Weapon Modifier
 | Name  | Type   | Description          |
