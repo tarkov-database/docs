@@ -6,6 +6,7 @@
 | `class` | string | The weapon class, e.g. `assaultCarbine`, `pistol`, ` smg` |
 | `caliber` | string | The weapon caliber |
 | `rof` | int | The rate of fire of the weapon |
+| `burstRounds` | int | Number of rounds per burst, if available |
 | `action` | string | The action type e.g. `gas`, `recoil`, `bolt` |
 | `modes` | []string | The fire modes of the weapon |
 | `velocity` | float | The muzzle velocity in meters per second |
