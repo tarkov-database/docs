@@ -7,22 +7,36 @@
         
         <meta name="robots" content="noindex" />
         
+        
+
+
+        <!-- Custom HTML head -->
+        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
+        
         <link rel="stylesheet" href="css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -38,7 +52,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -118,9 +132,11 @@
                     <h1 class="menu-title">Tarkov Database Docs</h1>
 
                     <div class="right-buttons">
+                        
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+                        
                         
                     </div>
                 </div>
@@ -261,6 +277,7 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 <tr><td><code>penetration</code></td><td>float</td><td>The penetration power of the ammo</td></tr>
 <tr><td><code>armorDamage</code></td><td>float</td><td>The damage done to an armor</td></tr>
 <tr><td><code>fragmentation</code></td><td><a href="api/item/ammunition.html#fragmentation">object</a></td><td>The fragmentation properties of the ammo</td></tr>
+<tr><td><code>effects</code></td><td><a href="api/item/ammunition.html#effects">object</a></td><td>Various effects of the ammo</td></tr>
 <tr><td><code>pellets</code></td><td>int</td><td><strong>DEPRCATED</strong> The pellet count of the ammo if it's buckshot</td></tr>
 <tr><td><code>projectiles</code></td><td>int</td><td>The projectile count, relevant to e.g. buckshot or flechette rounds</td></tr>
 <tr><td><code>weaponModifier</code></td><td><a href="api/item/ammunition.html#weapon-modifier">object</a></td><td>The fragmentation properties of the ammo</td></tr>
@@ -270,6 +287,11 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 <tr><td><code>chance</code></td><td>float</td><td>The penetration chance of the ammunition</td></tr>
 <tr><td><code>min</code></td><td>int</td><td>The minimal fragment count</td></tr>
 <tr><td><code>max</code></td><td>int</td><td>Indicates if it's tracer ammunition</td></tr>
+</tbody></table>
+<h2><a class="header" href="#effects" id="effects">Effects</a></h2>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>lightBleedingChance</code></td><td>float</td><td>Percentage value increases or decreases the chance of light bleeding</td></tr>
+<tr><td><code>heavyBleedingChance</code></td><td>float</td><td>Percentage value increases or decreases the chance of heavy bleeding</td></tr>
 </tbody></table>
 <h2><a class="header" href="#weapon-modifier" id="weapon-modifier">Weapon Modifier</a></h2>
 <table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
@@ -451,6 +473,7 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 <tr><td><code>class</code></td><td>string</td><td>The weapon class, e.g. <code>assaultCarbine</code>, <code>pistol</code>, <code> smg</code></td></tr>
 <tr><td><code>caliber</code></td><td>string</td><td>The weapon caliber</td></tr>
 <tr><td><code>rof</code></td><td>int</td><td>The rate of fire of the weapon</td></tr>
+<tr><td><code>burstRounds</code></td><td>int</td><td>Number of rounds per burst, if available</td></tr>
 <tr><td><code>action</code></td><td>string</td><td>The action type e.g. <code>gas</code>, <code>recoil</code>, <code>bolt</code></td></tr>
 <tr><td><code>modes</code></td><td>[]string</td><td>The fire modes of the weapon</td></tr>
 <tr><td><code>velocity</code></td><td>float</td><td>The muzzle velocity in meters per second</td></tr>
@@ -701,10 +724,10 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
         
 
         
-        
+
         
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
         
 

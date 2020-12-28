@@ -3,8 +3,10 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Authentication - Tarkov Database Docs</title>
+        <title></title>
         
+        
+        <base href="/">
         
 
 
@@ -18,28 +20,28 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="../favicon.svg">
+        <link rel="icon" href="favicon.svg">
         
         
-        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="shortcut icon" href="favicon.png">
         
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
         
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="stylesheet" href="css/print.css" media="print">
         
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
         
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -49,7 +51,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "../";
+            var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
         </script>
 
@@ -95,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">The Project</a></li><li class="chapter-item expanded "><a href="../api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api/authentication.html" class="active"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="chapter-item expanded "><a href="../api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api/item/common.html"><strong aria-hidden="true">1.2.1.</strong> Common</a></li><li class="chapter-item expanded "><a href="../api/item/ammunition.html"><strong aria-hidden="true">1.2.2.</strong> Ammunition</a></li><li class="chapter-item expanded "><a href="../api/item/armor.html"><strong aria-hidden="true">1.2.3.</strong> Armor</a></li><li class="chapter-item expanded "><a href="../api/item/backpack.html"><strong aria-hidden="true">1.2.4.</strong> Backpack</a></li><li class="chapter-item expanded "><a href="../api/item/firearm.html"><strong aria-hidden="true">1.2.5.</strong> Firearm</a></li><li class="chapter-item expanded "><a href="../api/item/modification.html"><strong aria-hidden="true">1.2.6.</strong> Modification</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">The Project</a></li><li class="chapter-item expanded "><a href="api/api.html"><strong aria-hidden="true">1.</strong> REST API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api/authentication.html"><strong aria-hidden="true">1.1.</strong> Authentication</a></li><li class="chapter-item expanded "><a href="api/item/items.html"><strong aria-hidden="true">1.2.</strong> Items</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api/item/common.html"><strong aria-hidden="true">1.2.1.</strong> Common</a></li><li class="chapter-item expanded "><a href="api/item/ammunition.html"><strong aria-hidden="true">1.2.2.</strong> Ammunition</a></li><li class="chapter-item expanded "><a href="api/item/armor.html"><strong aria-hidden="true">1.2.3.</strong> Armor</a></li><li class="chapter-item expanded "><a href="api/item/backpack.html"><strong aria-hidden="true">1.2.4.</strong> Backpack</a></li><li class="chapter-item expanded "><a href="api/item/firearm.html"><strong aria-hidden="true">1.2.5.</strong> Firearm</a></li><li class="chapter-item expanded "><a href="api/item/modification.html"><strong aria-hidden="true">1.2.6.</strong> Modification</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -131,7 +133,7 @@
 
                     <div class="right-buttons">
                         
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -163,66 +165,15 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#authentication" id="authentication">Authentication</a></h1>
-<p>The API uses the open standard and stateless authentication method <strong>JSON Web Token (JWT)</strong>. A token contains all the data required for authentication, so no database query is needed.</p>
-<p>To learn more visit the <a href="https://jwt.io/introduction/">official website</a>.</p>
-<h2><a class="header" href="#get-a-token" id="get-a-token">Get A Token</a></h2>
-<p>If you do not have a token yet, you can apply for one using the following form.</p>
-<p><a href="https://forms.gle/A67VotJK8FPZeDKK9">API Request Form</a></p>
-<h2><a class="header" href="#use-a-token" id="use-a-token">Use A Token</a></h2>
-<p>For every request, a valid token must be transmitted. This can be done with passing the token via the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">authorization header</a> with the type <code>Bearer</code>.</p>
-<pre><code class="language-HEADER">Authorization: Bearer &lt;TOKEN&gt;
-</code></pre>
-<h2><a class="header" href="#refresh-a-token" id="refresh-a-token">Refresh A Token</a></h2>
-<p>Every token has a fixed lifetime of <strong>30 minutes</strong>, after which time it must be refreshed.
-To get a new fresh token, a <code>GET</code> request to the <code>/token</code> endpoint must be made with a previous valid token.</p>
-<p><em>There is a possibility that the lifetime of tokens will change in the future. Therefore, it's recommended to automatically check the expiration time of each token</em></p>
-<h3><a class="header" href="#get-token" id="get-token"><strong>GET</strong> <code>/token</code></a></h3>
-<h4><a class="header" href="#201-created" id="201-created"><code>201</code> Created</a></h4>
-<p>Token successfully created</p>
-<pre><code class="language-JSON">{
-    &quot;token&quot;: &quot;&lt;TOKEN&gt;&quot;
-}
-</code></pre>
-<h4><a class="header" href="#401-unauthorized" id="401-unauthorized"><code>401</code> Unauthorized</a></h4>
-<p>No or invalid token</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Unauthorized&quot;,
-    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
-    &quot;code&quot;: 401
-}
-</code></pre>
-<h4><a class="header" href="#403-forbidden" id="403-forbidden"><code>403</code> Forbidden</a></h4>
-<p>Locked user</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Forbidden&quot;,
-    &quot;message&quot;: &quot;User is locked&quot;,
-    &quot;code&quot;: 403
-}
-</code></pre>
-<h4><a class="header" href="#422-unprocessable-entity" id="422-unprocessable-entity"><code>422</code> Unprocessable Entity</a></h4>
-<p>Token signing error</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Unprocessable Entity&quot;,
-    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
-    &quot;code&quot;: 422
-}
-</code></pre>
+                        <h1><a class="header" href="#document-not-found-404" id="document-not-found-404">Document not found (404)</a></h1>
+<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../api/api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
 
-                        
-                            <a rel="next" href="../api/item/items.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -232,15 +183,7 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../api/api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
 
-                
-                    <a rel="next" href="../api/item/items.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
@@ -261,14 +204,14 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
         
 
         
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
