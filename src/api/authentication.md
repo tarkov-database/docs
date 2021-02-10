@@ -16,10 +16,8 @@ Authorization: Bearer <TOKEN>
 ```
 
 ## Refresh A Token
-Every token has a fixed lifetime of **30 minutes**, after which time it must be refreshed.
+Every token has a fixed lifetime, after which time it must be refreshed.
 To get a new fresh token, a `GET` request to the `/token` endpoint must be made with a previous valid token.
-
-*There is a possibility that the lifetime of tokens will change in the future. Therefore, it's recommended to automatically check the expiration time of each token*
 
 
 ### **GET** `/token`
@@ -28,7 +26,8 @@ To get a new fresh token, a `GET` request to the `/token` endpoint must be made 
 Token successfully created
 ```JSON
 {
-    "token": "<TOKEN>"
+    "token": "<TOKEN>",
+    "expires": 1610591017
 }
 ```
 
