@@ -178,14 +178,14 @@
 <pre><code class="language-HEADER">Authorization: Bearer &lt;TOKEN&gt;
 </code></pre>
 <h2><a class="header" href="#refresh-a-token" id="refresh-a-token">Refresh A Token</a></h2>
-<p>Every token has a fixed lifetime of <strong>30 minutes</strong>, after which time it must be refreshed.
+<p>Every token has a fixed lifetime, after which time it must be refreshed.
 To get a new fresh token, a <code>GET</code> request to the <code>/token</code> endpoint must be made with a previous valid token.</p>
-<p><em>There is a possibility that the lifetime of tokens will change in the future. Therefore, it's recommended to automatically check the expiration time of each token</em></p>
 <h3><a class="header" href="#get-token" id="get-token"><strong>GET</strong> <code>/token</code></a></h3>
 <h4><a class="header" href="#201-created" id="201-created"><code>201</code> Created</a></h4>
 <p>Token successfully created</p>
 <pre><code class="language-JSON">{
-    &quot;token&quot;: &quot;&lt;TOKEN&gt;&quot;
+    &quot;token&quot;: &quot;&lt;TOKEN&gt;&quot;,
+    &quot;expires&quot;: 1610591017
 }
 </code></pre>
 <h4><a class="header" href="#401-unauthorized" id="401-unauthorized"><code>401</code> Unauthorized</a></h4>
