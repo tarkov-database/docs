@@ -1,42 +1,28 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js ayu">
+<html lang="en" class="coal" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Tarkov Database Docs</title>
-        
-        <meta name="robots" content="noindex" />
-        
-        
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        
         <link rel="icon" href="favicon.svg">
-        
-        
         <link rel="shortcut icon" href="favicon.png">
-        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        
         <link rel="stylesheet" href="css/print.css" media="print">
-        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -44,19 +30,18 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "coal";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -72,27 +57,34 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
-            html.classList.remove('ayu')
+            html.classList.remove('coal')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -102,16 +94,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -120,31 +133,29 @@
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Tarkov Database Docs</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
+                        <a href="https://github.com/tarkov-database/docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -152,10 +163,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -165,56 +175,64 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#the-project" id="the-project">The Project</a></h1>
-<h1><a class="header" href="#rest-api" id="rest-api">REST API</a></h1>
-<h1><a class="header" href="#authentication" id="authentication">Authentication</a></h1>
-<p>The API uses the open standard and stateless authentication method <strong>JSON Web Token (JWT)</strong>. A token contains all the data required for authentication, so no database query is needed.</p>
-<p>To learn more visit the <a href="https://jwt.io/introduction/">official website</a>.</p>
-<h2><a class="header" href="#get-a-token" id="get-a-token">Get A Token</a></h2>
-<p>If you do not have a token yet, you can apply for one using the following form.</p>
-<p><a href="https://forms.gle/A67VotJK8FPZeDKK9">API Request Form</a></p>
-<h2><a class="header" href="#use-a-token" id="use-a-token">Use A Token</a></h2>
-<p>For every request, a valid token must be transmitted. This can be done with passing the token via the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">authorization header</a> with the type <code>Bearer</code>.</p>
-<pre><code class="language-HEADER">Authorization: Bearer &lt;TOKEN&gt;
-</code></pre>
-<h2><a class="header" href="#refresh-a-token" id="refresh-a-token">Refresh A Token</a></h2>
-<p>Every token has a fixed lifetime, after which time it must be refreshed.
-To get a new fresh token, a <code>GET</code> request to the <code>/token</code> endpoint must be made with a previous valid token.</p>
-<h3><a class="header" href="#get-token" id="get-token"><strong>GET</strong> <code>/token</code></a></h3>
-<h4><a class="header" href="#201-created" id="201-created"><code>201</code> Created</a></h4>
-<p>Token successfully created</p>
-<pre><code class="language-JSON">{
-    &quot;token&quot;: &quot;&lt;TOKEN&gt;&quot;,
-    &quot;expires&quot;: 1610591017
+                        <h1 id="the-project"><a class="header" href="#the-project">The Project</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rest-api"><a class="header" href="#rest-api">REST API</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="obtaining-an-access-token-using-oauth-20-client-credentials-flow"><a class="header" href="#obtaining-an-access-token-using-oauth-20-client-credentials-flow">Obtaining an Access Token using OAuth 2.0 Client Credentials Flow</a></h1>
+<p>OAuth 2.0 is a popular protocol used for securing API access. The Client Credentials Flow is one of the grant types in OAuth 2.0 that allows a client (typically a server or a trusted application) to obtain an access token directly from the authorization server without involving a user. This access token can then be used to access protected resources on the API. In this guide, we’ll walk you through the steps to obtain an access token using the Client Credentials Flow, with JSON as the communication format.</p>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
+<p>Before you begin, make sure you have the following prerequisites in place:</p>
+<ul>
+<li><strong>Client Credentials:</strong> You should have the client ID and client secret provided by the authorization server. You can obtain this by creating a client via the <a href="https://id.tarkov-database.com">identity site</a>.</li>
+</ul>
+<h2 id="steps-to-obtain-an-access-token"><a class="header" href="#steps-to-obtain-an-access-token">Steps to Obtain an Access Token</a></h2>
+<p>Follow these steps to obtain an access token using the Client Credentials Flow:</p>
+<h3 id="1-construct-the-token-request"><a class="header" href="#1-construct-the-token-request">1. Construct the Token Request</a></h3>
+<p>Compose a POST request to the authorization server’s token endpoint (<code>https://identity.tarkov-database.com/v1/oauth/token</code>). Include the following parameters in the request body as a JSON object:</p>
+<ul>
+<li><code>grant_type</code>: Set this to “client_credentials” to specify the Client Credentials Flow.</li>
+<li><code>client_id</code>: Your client ID.</li>
+<li><code>client_secret</code>: Your client secret.</li>
+<li><del><code>scope</code>: Define the scope of access required.</del></li>
+</ul>
+<p>Here is an example request:</p>
+<pre><code class="language-HTTP">POST https://identity.tarkov-database.com/v1/oauth/token HTTP/1.1
+Content-Type: application/json
+
+{
+    &quot;client_id&quot;: &quot;&lt;CLIENT-ID&gt;&quot;,
+    &quot;client_secret&quot;: &quot;&lt;CLIENT-SECRET&gt;&quot;,
+    &quot;grant_type&quot;: &quot;client_credentials&quot;,
 }
 </code></pre>
-<h4><a class="header" href="#401-unauthorized" id="401-unauthorized"><code>401</code> Unauthorized</a></h4>
-<p>No or invalid token</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Unauthorized&quot;,
-    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
-    &quot;code&quot;: 401
+<h3 id="2-send-the-token-request"><a class="header" href="#2-send-the-token-request">2. Send the Token Request</a></h3>
+<p>Send the POST request to the authorization server’s token endpoint (<code>https://identity.tarkov-database.com/v1/oauth/token</code>). You can use your preferred HTTP client library or tool (e.g., cURL, Postman) to make the request.</p>
+<h3 id="3-receive-the-access-token"><a class="header" href="#3-receive-the-access-token">3. Receive the Access Token</a></h3>
+<p>Upon successful authentication and authorization, the authorization server will respond with an access token in the JSON format. The response typically includes:</p>
+<ul>
+<li><code>access_token</code>: The access token that you can use to access the protected resources.</li>
+<li><code>token_type</code>: The type of the token (usually “Bearer”).</li>
+<li><code>expires_in</code>: The expiration time of the token (in seconds).</li>
+<li><del><code>scope</code>: The scope of access granted.</del></li>
+</ul>
+<p>Here is an example response:</p>
+<pre><code class="language-json">{
+    &quot;access_token&quot;: &quot;&lt;ACCESS-TOKEN&gt;&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;,
+    &quot;expires_in&quot;: 3600,
 }
 </code></pre>
-<h4><a class="header" href="#403-forbidden" id="403-forbidden"><code>403</code> Forbidden</a></h4>
-<p>Locked user</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Forbidden&quot;,
-    &quot;message&quot;: &quot;User is locked&quot;,
-    &quot;code&quot;: 403
-}
+<h3 id="4-use-the-access-token"><a class="header" href="#4-use-the-access-token">4. Use the Access Token</a></h3>
+<p>Now that you have obtained an access token, you can include it in the <code>Authorization</code> header of your API requests as follows:</p>
+<pre><code class="language-HTTP">GET /api/resource HTTP/1.1
+Host: &lt;SERVICE&gt;.tarkov-database.com
+Authorization: Bearer &lt;ACCESS-TOKEN&gt;
 </code></pre>
-<h4><a class="header" href="#422-unprocessable-entity" id="422-unprocessable-entity"><code>422</code> Unprocessable Entity</a></h4>
-<p>Token signing error</p>
-<pre><code class="language-JSON">{
-    &quot;status&quot;: &quot;Unprocessable Entity&quot;,
-    &quot;message&quot;: &quot;&lt;ERROR MESSAGE&gt;&quot;,
-    &quot;code&quot;: 422
-}
-</code></pre>
-<h1><a class="header" href="#items" id="items">Items</a></h1>
-<h1><a class="header" href="#common" id="common">Common</a></h1>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>That’s it! You have successfully obtained an access token using the OAuth 2.0 Client Credentials Flow. Remember to handle the token securely and renew it as needed, as access tokens typically have a limited lifespan.</p>
+<p>Happy coding!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="items"><a class="header" href="#items">Items</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="common"><a class="header" href="#common">Common</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>_id</code></td><td>string</td><td>The ID of the item</td></tr>
 <tr><td><code>name</code></td><td>string</td><td>The name of the item</td></tr>
 <tr><td><code>shortName</code></td><td>string</td><td>The short name of the item</td></tr>
@@ -227,20 +245,23 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 <tr><td><code>_modified</code></td><td>int</td><td>The modified date as Unix timestamp</td></tr>
 <tr><td><code>_kind</code></td><td>string</td><td>The entity type of the item</td></tr>
 </tbody></table>
-<h2><a class="header" href="#grid" id="grid">Grid</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="grid"><a class="header" href="#grid">Grid</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>color</code></td><td><a href="api/item/common.html#color">object</a></td><td>The grid background color in RGBA</td></tr>
 <tr><td><code>height</code></td><td>int</td><td>The grid height of the item</td></tr>
 <tr><td><code>width</code></td><td>int</td><td>The grid width of the item</td></tr>
 </tbody></table>
-<h2><a class="header" href="#color" id="color">Color</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="color"><a class="header" href="#color">Color</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>r</code></td><td>uint</td><td>Red channel</td></tr>
 <tr><td><code>g</code></td><td>uint</td><td>Green channel</td></tr>
 <tr><td><code>b</code></td><td>uint</td><td>Blue channel</td></tr>
 <tr><td><code>a</code></td><td>uint</td><td>Alpha channel</td></tr>
 </tbody></table>
-<h2><a class="header" href="#example" id="example">Example</a></h2>
+</div>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
 <pre><code class="language-JSON">{
   &quot;_id&quot;: &quot;590c392f86f77444754deb29&quot;,
   &quot;name&quot;: &quot;SSD drive&quot;,
@@ -264,13 +285,13 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
   &quot;_kind&quot;: &quot;common&quot;
 }
 </code></pre>
-<h1><a class="header" href="#ammunition" id="ammunition">Ammunition</a></h1>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ammunition"><a class="header" href="#ammunition">Ammunition</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>caliber</code></td><td>string</td><td>The caliber of the ammunition</td></tr>
 <tr><td><code>type</code></td><td>string</td><td>The type of the ammunition</td></tr>
-<tr><td><code>tracer</code></td><td>bool</td><td>Indicates if it's tracer ammunition</td></tr>
+<tr><td><code>tracer</code></td><td>bool</td><td>Indicates if it’s tracer ammunition</td></tr>
 <tr><td><code>tracerColor</code></td><td>string</td><td>The tracer color</td></tr>
-<tr><td><code>subsonic</code></td><td>bool</td><td>Indicates if it's subsonic ammo</td></tr>
+<tr><td><code>subsonic</code></td><td>bool</td><td>Indicates if it’s subsonic ammo</td></tr>
 <tr><td><code>velocity</code></td><td>float</td><td>Velocity of the projectile(s) in meters per second</td></tr>
 <tr><td><code>ballisticCoef</code></td><td>float</td><td>The ballistic coeficient of the ammo</td></tr>
 <tr><td><code>damage</code></td><td>float</td><td>The flesh damage of the ammo</td></tr>
@@ -278,27 +299,31 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 <tr><td><code>armorDamage</code></td><td>float</td><td>The damage done to an armor</td></tr>
 <tr><td><code>fragmentation</code></td><td><a href="api/item/ammunition.html#fragmentation">object</a></td><td>The fragmentation properties of the ammo</td></tr>
 <tr><td><code>effects</code></td><td><a href="api/item/ammunition.html#effects">object</a></td><td>Various effects of the ammo</td></tr>
-<tr><td><code>pellets</code></td><td>int</td><td><strong>DEPRCATED</strong> The pellet count of the ammo if it's buckshot</td></tr>
+<tr><td><code>pellets</code></td><td>int</td><td><strong>DEPRCATED</strong> The pellet count of the ammo if it’s buckshot</td></tr>
 <tr><td><code>projectiles</code></td><td>int</td><td>The projectile count, relevant to e.g. buckshot or flechette rounds</td></tr>
 <tr><td><code>weaponModifier</code></td><td><a href="api/item/ammunition.html#weapon-modifier">object</a></td><td>The fragmentation properties of the ammo</td></tr>
 </tbody></table>
-<h2><a class="header" href="#fragmentation" id="fragmentation">Fragmentation</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="fragmentation"><a class="header" href="#fragmentation">Fragmentation</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>chance</code></td><td>float</td><td>The penetration chance of the ammunition</td></tr>
 <tr><td><code>min</code></td><td>int</td><td>The minimal fragment count</td></tr>
-<tr><td><code>max</code></td><td>int</td><td>Indicates if it's tracer ammunition</td></tr>
+<tr><td><code>max</code></td><td>int</td><td>Indicates if it’s tracer ammunition</td></tr>
 </tbody></table>
-<h2><a class="header" href="#effects" id="effects">Effects</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="effects"><a class="header" href="#effects">Effects</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>lightBleedingChance</code></td><td>float</td><td>Percentage value increases or decreases the chance of light bleeding</td></tr>
 <tr><td><code>heavyBleedingChance</code></td><td>float</td><td>Percentage value increases or decreases the chance of heavy bleeding</td></tr>
 </tbody></table>
-<h2><a class="header" href="#weapon-modifier" id="weapon-modifier">Weapon Modifier</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="weapon-modifier"><a class="header" href="#weapon-modifier">Weapon Modifier</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>accuracy</code></td><td>float</td><td>Modifier for weapon accuracy (percent)</td></tr>
 <tr><td><code>recoil</code></td><td>float</td><td>Modifier for weapon recoil (percent)</td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-1" id="example-1">Example</a></h2>
+</div>
+<h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
 <pre><code class="language-JSON">{
   &quot;_id&quot;: &quot;56d59d3ad2720bdb418b4577&quot;,
   &quot;name&quot;: &quot;9x19 mm Pst gzh&quot;,
@@ -342,36 +367,40 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
   }
 }
 </code></pre>
-<h1><a class="header" href="#armor" id="armor">Armor</a></h1>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="armor"><a class="header" href="#armor">Armor</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>type</code></td><td>string</td><td>The type of the armor e.g. <code>body, helmet</code></td></tr>
 <tr><td><code>armor</code></td><td><a href="api/item/armor.html#armor-properties">object</a></td><td>The armor properties</td></tr>
 <tr><td><code>penalties</code></td><td><a href="api/item/armor.html#penalties">object</a></td><td>The penalties of the armor</td></tr>
 <tr><td><code>blocking</code></td><td>array</td><td>Blocked zones e.g. <code>earpiece, eyewear</code></td></tr>
 <tr><td><code>slots</code></td><td>object</td><td>Modification slots of the armor</td></tr>
-<tr><td><code>compatibility</code></td><td>object</td><td>If it's an attachment to which it's compatible</td></tr>
+<tr><td><code>compatibility</code></td><td>object</td><td>If it’s an attachment to which it’s compatible</td></tr>
 </tbody></table>
-<h2><a class="header" href="#armor-properties" id="armor-properties">Armor properties</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="armor-properties"><a class="header" href="#armor-properties">Armor properties</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>class</code></td><td>int</td><td>The armor class</td></tr>
 <tr><td><code>durability</code></td><td>float</td><td>The max durability of the armor</td></tr>
 <tr><td><code>material</code></td><td><a href="api/item/armor.html#material-properties">object</a></td><td>Material properties of the armor</td></tr>
 <tr><td><code>bluntThroughput</code></td><td>float</td><td>The damage done to the target when the armor is not penetrated</td></tr>
 <tr><td><code>zones</code></td><td>array</td><td>The zones protected by the armor</td></tr>
 </tbody></table>
-<h2><a class="header" href="#material-properties" id="material-properties">Material properties</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="material-properties"><a class="header" href="#material-properties">Material properties</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>name</code></td><td>string</td><td>Name of the material</td></tr>
 <tr><td><code>destructibility</code></td><td>float</td><td>The destructibility of the material</td></tr>
 </tbody></table>
-<h2><a class="header" href="#penalties" id="penalties">Penalties</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="penalties"><a class="header" href="#penalties">Penalties</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>mouse</code></td><td>float</td><td>Mouse speed penalty</td></tr>
 <tr><td><code>speed</code></td><td>float</td><td>Movement speed penalty</td></tr>
 <tr><td><code>ergonomics</code></td><td>int</td><td>Ergonomics deduction</td></tr>
 <tr><td><code>deafness</code></td><td>string</td><td>Strength of hearing reduction e.g. <code>low, medium, high</code></td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-2" id="example-2">Example</a></h2>
+</div>
+<h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
 <pre><code class="language-JSON">{
   &quot;_id&quot;: &quot;5b44d0de86f774503d30cba8&quot;,
   &quot;name&quot;: &quot;IOTV Gen4 armor (high mobility kit)&quot;,
@@ -418,20 +447,22 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
   &quot;compatibility&quot;: {}
 }
 </code></pre>
-<h1><a class="header" href="#backpack" id="backpack">Backpack</a></h1>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="backpack"><a class="header" href="#backpack">Backpack</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>grids</code></td><td><a href="api/item/backpack.html#grid">array</a></td><td>Grids of the backpack</td></tr>
 <tr><td><code>penalties</code></td><td><a href="api/item/armor.html#penalties">object</a></td><td>The penalties of the backpack</td></tr>
 </tbody></table>
-<h2><a class="header" href="#grid-1" id="grid-1">Grid</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="grid-1"><a class="header" href="#grid-1">Grid</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>id</code></td><td>string</td><td>Identifier of the grid</td></tr>
 <tr><td><code>height</code></td><td>int</td><td>The grid height</td></tr>
 <tr><td><code>width</code></td><td>int</td><td>The grid width</td></tr>
 <tr><td><code>maxWeight</code></td><td>float</td><td>The maximum weight of the grid</td></tr>
 <tr><td><code>filter</code></td><td>object</td><td>Compatible items that fit into the grid (whitelist). No restriction when empty</td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-3" id="example-3">Example</a></h2>
+</div>
+<h2 id="example-3"><a class="header" href="#example-3">Example</a></h2>
 <pre><code class="language-JSON">{
   &quot;_id&quot;: &quot;5b44c6ae86f7742d1627baea&quot;,
   &quot;name&quot;: &quot;Ana tactical Beta 2 battle backpack&quot;,
@@ -467,8 +498,8 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
   }
 }
 </code></pre>
-<h1><a class="header" href="#firearm" id="firearm">Firearm</a></h1>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="firearm"><a class="header" href="#firearm">Firearm</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>type</code></td><td>string</td><td>The type of the firearm, e.g. <code>primary</code>, <code>secondary</code></td></tr>
 <tr><td><code>class</code></td><td>string</td><td>The weapon class, e.g. <code>assaultCarbine</code>, <code>pistol</code>, <code> smg</code></td></tr>
 <tr><td><code>caliber</code></td><td>string</td><td>The weapon caliber</td></tr>
@@ -484,12 +515,14 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 <tr><td><code>recoilHorizontal</code></td><td>float</td><td>The base horizontal recoil of the weapon</td></tr>
 <tr><td><code>slots</code></td><td><a href="api/item/firearm.html#slot">object</a></td><td>A map of the modification slots</td></tr>
 </tbody></table>
-<h2><a class="header" href="#slot" id="slot">Slot</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="slot"><a class="header" href="#slot">Slot</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>filter</code></td><td>object</td><td>A map of compatible item IDs categorized by <code>kind</code></td></tr>
 <tr><td><code>required</code></td><td>bool</td><td>Indicates whether the slot is required for an operational state</td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-4" id="example-4">Example</a></h2>
+</div>
+<h2 id="example-4"><a class="header" href="#example-4">Example</a></h2>
 <pre><code class="language-JSON">{
   &quot;_id&quot;: &quot;574d967124597745970e7c94&quot;,
   &quot;name&quot;: &quot;Simonov Semi-Automatic Carbine SKS 7.62x39&quot;,
@@ -565,8 +598,8 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
   }
 }
 </code></pre>
-<h1><a class="header" href="#modification" id="modification">Modification</a></h1>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modification"><a class="header" href="#modification">Modification</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>ergonomics</code></td><td>int</td><td>The ergonomics modifier of the modification</td></tr>
 <tr><td><code>raidModdable</code></td><td>int</td><td>Indicates if the modification is moddable in Raid. <code>0</code> = <strong>no</strong>, <code>1</code> = <strong>yes</strong>, <code>2</code> = <strong>only with a tool</strong></td></tr>
 <tr><td><code>gridModifier</code></td><td><a href="api/item/modification.html#grid-modifier">object</a></td><td>The modifiers that influence the grid properties of the parent</td></tr>
@@ -574,17 +607,20 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 <tr><td><code>compatibility</code></td><td>object</td><td>A map of compatible item IDs (reverse) categorized by <code>kind</code></td></tr>
 <tr><td><code>conflicts</code></td><td>object</td><td>A map of item IDs to conflict with, categorized by <code>kind</code></td></tr>
 </tbody></table>
-<h2><a class="header" href="#grid-modifier" id="grid-modifier">Grid Modifier</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="grid-modifier"><a class="header" href="#grid-modifier">Grid Modifier</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>height</code></td><td>int</td><td>The grid height modifier</td></tr>
 <tr><td><code>width</code></td><td>int</td><td>The grid width modifier</td></tr>
 </tbody></table>
-<h2><a class="header" href="#slot-1" id="slot-1">Slot</a></h2>
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+</div>
+<h2 id="slot-1"><a class="header" href="#slot-1">Slot</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>filter</code></td><td>object</td><td>A map with compatible item IDs categorized by <code>kind</code></td></tr>
 <tr><td><code>required</code></td><td>bool</td><td>Indicates whether the slot is required for an operational state</td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-5" id="example-5">Example</a></h2>
+</div>
+<h2 id="example-5"><a class="header" href="#example-5">Example</a></h2>
 <pre><code class="language-JSON">{
   &quot;_id&quot;: &quot;5c90c3622e221601da359851&quot;,
   &quot;name&quot;: &quot;B-13V rail platform above reciever \&quot;Classic\&quot;&quot;,
@@ -702,9 +738,7 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -712,49 +746,35 @@ To get a new fresh token, a <code>GET</code> request to the <code>/token</code> 
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
-        
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
-        
-        
 
+    </div>
     </body>
 </html>
