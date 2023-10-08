@@ -1,62 +1,74 @@
-# Authentication
+# Obtaining an Access Token using OAuth 2.0 Client Credentials Flow
 
-The API uses the open standard and stateless authentication method **JSON Web Token (JWT)**. A token contains all the data required for authentication, so no database query is needed.
+OAuth 2.0 is a popular protocol used for securing API access. The Client Credentials Flow is one of the grant types in OAuth 2.0 that allows a client (typically a server or a trusted application) to obtain an access token directly from the authorization server without involving a user. This access token can then be used to access protected resources on the API. In this guide, we'll walk you through the steps to obtain an access token using the Client Credentials Flow, with JSON as the communication format.
 
-To learn more visit the [official website](https://jwt.io/introduction/).
+## Prerequisites
 
-## Get A Token
-If you do not have a token yet, you can apply for one using the following form.
+Before you begin, make sure you have the following prerequisites in place:
 
-[API Request Form](https://forms.gle/A67VotJK8FPZeDKK9)
+- **Client Credentials:** You should have the client ID and client secret provided by the authorization server. You can obtain this by creating a client via the [identity site](https://id.tarkov-database.com).
 
-## Use A Token
-For every request, a valid token must be transmitted. This can be done with passing the token via the [authorization header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) with the type `Bearer`.
-```HEADER
-Authorization: Bearer <TOKEN>
-```
+## Steps to Obtain an Access Token
 
-## Refresh A Token
-Every token has a fixed lifetime, after which time it must be refreshed.
-To get a new fresh token, a `GET` request to the `/token` endpoint must be made with a previous valid token.
+Follow these steps to obtain an access token using the Client Credentials Flow:
 
+### 1. Construct the Token Request
 
-### **GET** `/token`
+Compose a POST request to the authorization server's token endpoint (`https://identity.tarkov-database.com/v1/oauth/token`). Include the following parameters in the request body as a JSON object:
 
-#### `201` Created
-Token successfully created
-```JSON
+- `grant_type`: Set this to "client_credentials" to specify the Client Credentials Flow.
+- `client_id`: Your client ID.
+- `client_secret`: Your client secret.
+- ~~`scope`: Define the scope of access required.~~
+
+Here is an example request:
+
+```HTTP
+POST https://identity.tarkov-database.com/v1/oauth/token HTTP/1.1
+Content-Type: application/json
+
 {
-    "token": "<TOKEN>",
-    "expires": 1610591017
+    "client_id": "<CLIENT-ID>",
+    "client_secret": "<CLIENT-SECRET>",
+    "grant_type": "client_credentials",
 }
 ```
 
-#### `401` Unauthorized
-No or invalid token
-```JSON
+### 2. Send the Token Request
+
+Send the POST request to the authorization server's token endpoint (`https://identity.tarkov-database.com/v1/oauth/token`). You can use your preferred HTTP client library or tool (e.g., cURL, Postman) to make the request.
+
+### 3. Receive the Access Token
+
+Upon successful authentication and authorization, the authorization server will respond with an access token in the JSON format. The response typically includes:
+
+- `access_token`: The access token that you can use to access the protected resources.
+- `token_type`: The type of the token (usually "Bearer").
+- `expires_in`: The expiration time of the token (in seconds).
+- ~~`scope`: The scope of access granted.~~
+
+Here is an example response:
+
+```json
 {
-    "status": "Unauthorized",
-    "message": "<ERROR MESSAGE>",
-    "code": 401
+    "access_token": "<ACCESS-TOKEN>",
+    "token_type": "Bearer",
+    "expires_in": 3600,
 }
 ```
 
-#### `403` Forbidden
-Locked user
-```JSON
-{
-    "status": "Forbidden",
-    "message": "User is locked",
-    "code": 403
-}
+### 4. Use the Access Token
+
+Now that you have obtained an access token, you can include it in the `Authorization` header of your API requests as follows:
+
+```HTTP
+GET /api/resource HTTP/1.1
+Host: <SERVICE>.tarkov-database.com
+Authorization: Bearer <ACCESS-TOKEN>
 ```
 
-#### `422` Unprocessable Entity
-Token signing error
-```JSON
-{
-    "status": "Unprocessable Entity",
-    "message": "<ERROR MESSAGE>",
-    "code": 422
-}
-```
+## Conclusion
+
+That's it! You have successfully obtained an access token using the OAuth 2.0 Client Credentials Flow. Remember to handle the token securely and renew it as needed, as access tokens typically have a limited lifespan.
+
+Happy coding!
