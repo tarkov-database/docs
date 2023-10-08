@@ -1,9 +1,18 @@
 [book]
-authors = ["Markus Wiegand <mail@morphy2k.dev>"]
+authors = [
+    "Markus Wiegand <mail@morphy.dev>",
+]
 language = "en"
 multilingual = false
 src = "src"
 title = "Tarkov Database Docs"
 
 [output.html]
-default-theme = "ayu"
+default-theme = "coal"
+preferred-dark-theme = "coal"
+curly-quotes = true
+mathjax-support = false
+copy-fonts = true
+git-repository-url = "https://github.com/tarkov-database/docs"
+git-repository-icon = "fa-github"
+cname = "docs.tarkov-database.com"
